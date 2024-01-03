@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
     };
     console.log(userdata);
     axios
-      .post("http://192.168.0.161:8080/api/v1/auth/register", userdata)
+      .post("http://127.0.0.1:8001/auth/signup", userdata)
       .then((res) => {
         navigate("/login");
       })
