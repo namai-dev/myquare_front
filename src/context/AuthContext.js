@@ -37,6 +37,15 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const SignUp = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log({
+      username: data.get("username"),
+      password: data.get("password"),
+    });
+  };
+
   const logout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("token");
