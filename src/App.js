@@ -7,20 +7,23 @@ import SignIn from "./components/main/SignIn";
 import SignUp from "./components/main/SignUp";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import Dashboard from "./components/project/Dashboard";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/signin" Component={SignIn} />
-          <Route path="/signup" Component={SignUp} />
-          <Route path="/" Component={Landing} />
-          <Route Component={PrivateRoutes}>
-            <Route path="/dashboard" Component={Dashboard} />
-          </Route>
-        </Routes>
+        <AuthProvider>
+          <Header />
+          <Routes>
+            <Route path="/signin" Component={SignIn} />
+            <Route path="/signup" Component={SignUp} />
+            <Route path="/" Component={Landing} />
+            <Route Component={PrivateRoutes}>
+              <Route path="/dashboard" Component={Dashboard} />
+            </Route>
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </>
   );

@@ -42,17 +42,21 @@ const Header = () => {
         </Typography>
 
         {isAuthenticated ? (
-          <Menu
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>New Square</MenuItem>
-            <MenuItem onClick={handleClose}>My Squares</MenuItem>
-            <MenuItem onClick={handleClose}>About</MenuItem>
-            <MenuItem onClick={handleClose}>Contact</MenuItem>
-            <MenuItem onClick={handleClose}>Github</MenuItem>
-          </Menu>
+          <>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>New Square</MenuItem>
+              <MenuItem onClick={handleClose}>My Squares</MenuItem>
+              <MenuItem onClick={handleClose}>About</MenuItem>
+              <MenuItem onClick={handleClose}>Contact</MenuItem>
+              <MenuItem onClick={handleClose}>Github</MenuItem>
+            </Menu>
+
+            <MenuItem component={Link}>Logout</MenuItem>
+          </>
         ) : (
           <MenuList sx={{ display: "flex", flexDirection: "row" }}>
             <MenuItem component={Link} to="/signin">
