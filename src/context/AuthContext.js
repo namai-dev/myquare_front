@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     axios
       .post("http://127.0.0.1:8001/auth/signup", userdata)
       .then((res) => {
-        navigate("/login");
+        history("/login");
       })
       .catch((err) => console.log(err));
     console.log({
