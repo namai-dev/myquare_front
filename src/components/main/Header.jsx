@@ -8,13 +8,14 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Menu, MenuItem, MenuList } from "@mui/material";
+import { Button, Menu, MenuItem, MenuList } from "@mui/material";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { isAuthenticated } = React.useContext(AuthContext);
+  const { logout } = React.useContext(AuthContext);
 
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
@@ -55,7 +56,9 @@ const Header = () => {
               <MenuItem onClick={handleClose}>Github</MenuItem>
             </Menu>
 
-            <MenuItem component={Link}>Logout</MenuItem>
+            <MenuItem component={Button} onClick={logout}>
+              Logout
+            </MenuItem>
           </>
         ) : (
           <MenuList sx={{ display: "flex", flexDirection: "row" }}>
