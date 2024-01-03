@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
-  const SignUp = (event) => {
+  const handleSignUp = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     axios
       .post("http://127.0.0.1:8001/auth/signup", userdata)
       .then((res) => {
-        history("/login");
+        history("/signin");
       })
       .catch((err) => console.log(err));
     console.log({
@@ -68,6 +68,7 @@ export const AuthProvider = ({ children }) => {
     isAuthenticated: isAuthenticated,
     handleSignIn: handleSignIn,
     logout: logout,
+    handleSignUp: handleSignUp,
   };
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

@@ -12,7 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { AuthProvider } from "../../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 
 function Copyright(props) {
   return (
@@ -37,7 +37,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const { SignUp } = React.useContext(AuthProvider);
+  const { handleSignUp } = React.useContext(AuthContext);
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -57,7 +57,12 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" onSubmit={SignUp} noValidate sx={{ mt: 1 }}>
+          <Box
+            component="form"
+            onSubmit={handleSignUp}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
               margin="normal"
               required

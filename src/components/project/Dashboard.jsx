@@ -9,8 +9,7 @@ import {
   ListItem,
   ListItemText,
 } from "@mui/material";
-import { PlayArrow } from "@mui/icons-material";
-import { Description } from "@mui/icons-material";
+
 import PDFList from "./PDFList";
 import VideoList from "./VideoList";
 import LinkList from "./LinkList";
@@ -22,9 +21,16 @@ const Dashboard = () => {
     setSelectedSection(section);
   };
 
+  const getData = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const topic = data.get("topic");
+  };
+
   return (
     <Container sx={{ padding: 3 }}>
       <Box
+        component="form"
         sx={{
           borderBottom: "2px solid grey",
           display: "flex",
@@ -35,6 +41,7 @@ const Dashboard = () => {
         <TextField
           sx={{ padding: 1, flex: 1 }}
           variant="outlined"
+          name="topic"
           fullWidth
           placeholder="Search content..."
           InputProps={{
