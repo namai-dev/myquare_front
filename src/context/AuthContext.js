@@ -40,6 +40,18 @@ export const AuthProvider = ({ children }) => {
   const SignUp = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    const userdata = {
+      username: data.get("username"),
+      password: data.get("password"),
+    };
+    console.log(userdata);
+    axios
+      .post("http://192.168.0.161:8080/api/v1/auth/register", userdata)
+      .then((res) => {
+        navigate("/login");
+      })
+      .catch((err) => console.log(err));
     console.log({
       username: data.get("username"),
       password: data.get("password"),
